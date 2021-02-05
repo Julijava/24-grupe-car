@@ -1,3 +1,5 @@
+import { dalyba } from './dalyba.js';
+
 class Car {
     constructor(tank, consumption) {
         this.ok = true;
@@ -37,10 +39,10 @@ class Car {
             return false;
         }
 
-        const maxDistanceAvailable = this.tank / this.consumption * 100;
+        const maxDistanceAvailable = dalyba(this.tank, this.consumption) * 100;
         if (maxDistanceAvailable >= distance) {
             this.mileage += distance;
-            this.tank -= distance * this.consumption / 100;
+            this.tank -= distance * dalyba(this.consumption, 100);
             console.log('Nuvaziavo: ', distance);
         } else {
             this.mileage += maxDistanceAvailable;
